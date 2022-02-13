@@ -25,8 +25,6 @@ var isPalindrome1 = function (s) {
 	for (let i = 0; i < length + 1; i++) {
 		const el = str[i];
 		if (el !== str[length - i]) {
-			console.log(el);
-			console.log(str[length - i]);
 			return false;
 		}
 	}
