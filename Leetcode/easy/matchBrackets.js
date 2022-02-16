@@ -1,3 +1,15 @@
+function isValidParentheses(str) {
+	let countOpen = 0;
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] === "(") countOpen++;
+		else countOpen--;
+		if (countOpen < 0) return false;
+	}
+	return !countOpen;
+}
+
+console.log(isValidParentheses("()()"));
+
 function matchBrackets(s) {
 	const stack = [];
 

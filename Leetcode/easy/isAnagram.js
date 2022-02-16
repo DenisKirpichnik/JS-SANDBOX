@@ -63,3 +63,24 @@ function isAnagram2(s, t) {
 
 	return true;
 }
+
+const isAnagram3 = (a, b) => {
+	const l1 = a.length;
+	const l2 = b.length;
+	if (l1 !== l2) return false;
+
+	const map = {};
+
+	for (let i = 0; i < a.length; i++) {
+		if (!map[a[i]]) map[a[i]] = 0;
+		map[a[i]]++;
+	}
+
+	for (let i = 0; i < b.length; i++) {
+		if (!map[b[i]]) return false;
+		map[b[i]]--;
+	}
+	return true;
+};
+
+console.log(isAnagram3("ab", "ba"));
