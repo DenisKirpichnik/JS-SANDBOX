@@ -98,73 +98,16 @@
 
 // console.log(findTargetSum([3, 11, -1, 0], 10));
 
-function createMap(str) {
-	const map = {};
-	// const formattedStr = str.toLowerCase().replace(/[^\w]/g, "");
-	for (let char of str) {
-		map[char] = map[char] + 1 || 1;
-	}
-	return map;
-}
+const debounce1 = (fn, ms) => {
+	let timeoutID;
 
-function isAnagram(s, t) {
-	// if (str1.length !== str2.length) {
-	// 	return false;
-	// }
-	const firstMap = createMap(s);
-	const secondMap = createMap(t);
+	return function () {
+		const funccall = () => fn.apply(this, arguments);
 
-	if (Object.keys(firstMap).length !== Object.keys(secondMap).length) {
-		return false;
-	}
-	for (let char in firstMap) {
-		if (firstMap[char] !== secondMap[char]) return false;
-	}
-	return true;
-}
+		clearTimeout(timeoutID);
 
-console.log(isAnagram("aba!?", "baa"));
-console.log(isAnagram("friEnd", "Finder"));
-
-var isAnagram1 = function (s, t) {
-	const str1 = s.toLowerCase();
-	const str2 = t.toLowerCase();
-	var lenA = s.length;
-	var lenB = t.length;
-	var map = {};
-
-	for (let i = 0; i < lenA; i++) {
-		if (!map[str1[i]]) map[str1[i]] = 0;
-		map[s[i]]++;
-	}
-
-	for (let j = 0; i < lenB; j++) {
-		if (!map[str2[j]]) return false;
-		map[s[j]]--;
-	}
-
-	return true;
+		timeoutID = setTimeout(funccall, ms);
+	};
 };
 
-console.log(isAnagram1("aba", "baa"));
-console.log(isAnagram1("friEnd", "Finder"));
-
-function isAnagram3(s, t) {
-	const ans = new Array(26).fill(0);
-
-	for (let i = 0; i < s.length; i++) {
-		ans[s.charCodeAt(i) - 97]++;
-	}
-
-	for (let i = 0; i < t.length; i++) {
-		ans[t.charCodeAt(i) - 97]--;
-	}
-
-	for (let i = 0; i < 26; i++) {
-		if (ans[i] !== 0) return false;
-	}
-
-	return true;
-}
-
-console.log(isAnagram3("aba", "baa"));
+console.log(debounce1(() => "wow", 3000));

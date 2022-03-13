@@ -64,6 +64,7 @@ function isAnagram2(s, t) {
 	return true;
 }
 
+// THE BEST SOLUTION
 const isAnagram3 = (a, b) => {
 	const l1 = a.length;
 	const l2 = b.length;
@@ -84,3 +85,74 @@ const isAnagram3 = (a, b) => {
 };
 
 console.log(isAnagram3("ab", "ba"));
+
+function createMap(str) {
+	const map = {};
+	// const formattedStr = str.toLowerCase().replace(/[^\w]/g, "");
+	for (let char of str) {
+		map[char] = map[char] + 1 || 1;
+	}
+	return map;
+}
+
+function isAnagram(s, t) {
+	// if (str1.length !== str2.length) {
+	// 	return false;
+	// }
+	const firstMap = createMap(s);
+	const secondMap = createMap(t);
+
+	if (Object.keys(firstMap).length !== Object.keys(secondMap).length) {
+		return false;
+	}
+	for (let char in firstMap) {
+		if (firstMap[char] !== secondMap[char]) return false;
+	}
+	return true;
+}
+
+console.log(isAnagram("aba!?", "baa"));
+console.log(isAnagram("friEnd", "Finder"));
+
+var isAnagram1 = function (s, t) {
+	const str1 = s.toLowerCase();
+	const str2 = t.toLowerCase();
+	var lenA = s.length;
+	var lenB = t.length;
+	var map = {};
+
+	for (let i = 0; i < lenA; i++) {
+		if (!map[str1[i]]) map[str1[i]] = 0;
+		map[s[i]]++;
+	}
+
+	for (let j = 0; i < lenB; j++) {
+		if (!map[str2[j]]) return false;
+		map[s[j]]--;
+	}
+
+	return true;
+};
+
+console.log(isAnagram1("aba", "baa"));
+console.log(isAnagram1("friEnd", "Finder"));
+
+function isAnagram3(s, t) {
+	const ans = new Array(26).fill(0);
+
+	for (let i = 0; i < s.length; i++) {
+		ans[s.charCodeAt(i) - 97]++;
+	}
+
+	for (let i = 0; i < t.length; i++) {
+		ans[t.charCodeAt(i) - 97]--;
+	}
+
+	for (let i = 0; i < 26; i++) {
+		if (ans[i] !== 0) return false;
+	}
+
+	return true;
+}
+
+console.log(isAnagram3("aba", "baa"));

@@ -1,26 +1,26 @@
-// var lengthOfLongestSubstring = function (s) {
-// 	if (s.length === 0 || s.length === 1) {
-// 		return s.length;
-// 	}
+var lengthOfLongestSubstring = function (s) {
+	if (s.length === 0 || s.length === 1) {
+		return s.length;
+	}
 
-// 	maxStr = "";
-// 	s.split("").reduce((prev, curr) => {
-// 		let nextStr;
+	maxStr = "";
+	s.split("").reduce((prev, curr) => {
+		let nextStr;
 
-// 		if (prev.indexOf(curr) === -1) {
-// 			nextStr = prev + curr;
-// 		} else {
-// 			const newFirstInd = prev.indexOf(curr) + 1;
-// 			const newStr = prev.substring(newFirstInd, prev.length);
-// 			nextStr = newStr + curr;
-// 		}
+		if (prev.indexOf(curr) === -1) {
+			nextStr = prev + curr;
+		} else {
+			const newFirstInd = prev.indexOf(curr) + 1;
+			const newStr = prev.substring(newFirstInd, prev.length);
+			nextStr = newStr + curr;
+		}
 
-// 		maxStr = nextStr.length > maxStr.length ? nextStr : maxStr;
-// 		return nextStr;
-// 	});
+		maxStr = nextStr.length > maxStr.length ? nextStr : maxStr;
+		return nextStr;
+	});
 
-// 	return maxStr.length;
-// };
+	return maxStr.length;
+};
 
 var lengthOfLongestSubstring = function (s) {
 	const $window = new SlidingWindow(s);
