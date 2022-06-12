@@ -1,33 +1,19 @@
-.grid {
-	background-color: rgb(255, 255, 255);
-	width: 50%;
-	height: 50vh;
-	/* height: 100vh; */
-	/* width: 100%;
-	height: 100vh;
-	display: grid;
-	grid-template-areas:
-		"header header"
-		"main sidebar"
-		"footer footer"; */
+span + span {
+	color: red;
 }
 
-.header {
-	grid-area: header;
-	background-color: red;
+i * + * {
+	background-color: green;
 }
 
-.sidebar {
-	grid-area: sidebar;
-	background-color: rgb(62, 143, 79);
+/* [href] {
+	background-color: purple;
+} */
+
+a[href$="foo"] {
+	background-color: aqua;
 }
 
-.main {
-	grid-area: main;
-	background-color: rgb(200, 192, 81);
-}
-
-.footer {
-	grid-area: footer;
-	background-color: rgb(67, 78, 180);
+a[href$="test"] {
+	background-color: rgb(255, 17, 0);
 }
