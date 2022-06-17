@@ -73,3 +73,5 @@ const jewels = (J, S) => {
 };
 
 jewels("ab", "aabbccd");
+
+console.log("wow");
