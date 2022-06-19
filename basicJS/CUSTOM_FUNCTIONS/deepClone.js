@@ -103,30 +103,6 @@ function deepCloneI(objA) {
 
 let copiedObj = deepCloneI(objA);
 
-const test = (str) => {
-	const stack = [];
-
-	const map = {
-		"(": ")",
-		"[": "]",
-		"{": "}",
-	};
-
-	for (let bracket of str) {
-		if (map.hasOwnProperty(bracket)) {
-			stack.push(bracket);
-		} else {
-			const leftBr = stack.pop();
-			if (bracket !== map[leftBr]) return false;
-		}
-	}
-
-	return stack.length === 0;
-};
-
-const res = test("()");
-console.log(res);
-
 //// IS THIS OK?
 // let user = {
 //   name: "Alexander",

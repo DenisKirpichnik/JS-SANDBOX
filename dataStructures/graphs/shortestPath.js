@@ -6,9 +6,18 @@ const edges = [
 	["w", "v"],
 ];
 
+// TESTIS graph {
+//   w: [ 'x', 'v' ],
+//   x: [ 'w', 'y' ],
+//   y: [ 'x', 'z' ],
+//   z: [ 'y', 'v' ],
+//   v: [ 'z', 'w' ]
+// }
+
 // BFS is preferable  in this problem
 const shortestPath = (edges, nodeA, nodeB) => {
 	const graph = buildGraph(edges);
+	const visited = new Set([nodeA]);
 
 	const queue = [[nodeA, 0]];
 
@@ -16,10 +25,16 @@ const shortestPath = (edges, nodeA, nodeB) => {
 		const [node, distance] = queue.shift();
 
 		if (node === nodeB) return distance;
+
 		for (let neighbor of graph[node]) {
-			queue.push(neighbor);
+			if (!visited.has(neighbor)) {
+				visited.add(neighbor);
+				queue.push([neighbor, distance + 1]);
+			}
 		}
 	}
+
+	return -1;
 };
 
 const buildGraph = (edges) => {
@@ -37,3 +52,5 @@ const buildGraph = (edges) => {
 
 	return graph;
 };
+
+console.log(shortestPath(edges, "w", "z"));
