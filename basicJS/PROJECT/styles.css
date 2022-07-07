@@ -1,19 +1,33 @@
-span + span {
-	color: red;
+#myContainer {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#myAnimation {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
 }
 
-i * + * {
-	background-color: green;
+.wow {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: lightgray;
+  width: 1200px;
+  height: 100vh;
+  gap: 20px;
 }
 
-/* [href] {
-	background-color: purple;
-} */
-
-a[href$="foo"] {
-	background-color: aqua;
+.myClass {
+  color: red;
 }
 
-a[href$="test"] {
-	background-color: rgb(255, 17, 0);
+img {
+  width: 500px;
+  height: 500px;
 }

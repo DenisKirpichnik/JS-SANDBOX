@@ -1,12 +1,3 @@
-const nodes = document.getElementsByClassName("btn");
-
-for (let i = 0; i < nodes.length; i++) {
-	nodes[i].addEventListener("click", function () {
-		console.log("Element #" + i);
-	});
-}
-a;
-
 // import React from "react"
 // import "./styles.css";
 
