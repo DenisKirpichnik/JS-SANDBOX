@@ -7,6 +7,7 @@ class Node {
 }
 
 // WITH STACK , ITERATIVE VERSION
+// O(n) O(1)
 const depthFirstValues = (root) => {
 	if (root === null) return [];
 	const result = [];
@@ -21,6 +22,7 @@ const depthFirstValues = (root) => {
 	return result;
 };
 
+// O(n)
 const depthFirstValuesR = (root) => {
 	if (root === null) return [];
 	const leftValues = depthFirstValuesR(root.left);
