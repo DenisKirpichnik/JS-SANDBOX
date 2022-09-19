@@ -1,24 +1,26 @@
-import { Subscribable } from "./pubSubHerrington";
+import { Subscribable } from "./Subscribable-class";
 
 const sub = new Subscribable<string>();
-sub.subscribe(console.log);
-sub.publish("heelo");
 const unsub = sub.subscribe(console.log);
+sub.publish("Hello");
+sub.publish("Whatever");
 unsub();
-sub.publish("bye");
+sub.publish("Goodbye");
 
 class DataClass extends Subscribable<number> {
 	constructor(public value: number) {
 		super();
 	}
 
-	setVlaue(v: number) {
+	setValue(v: number) {
 		this.value = v;
 		this.publish(v);
 	}
 }
 
 const dc = new DataClass(0);
-const dcUnsub = dc.subscribe((v: number) => console.log(v));
-dc.setVlaue(42);
+const dcUnsub = dc.subscribe((v: number) => console.log("DC1", v));
+const dcUnsub2 = dc.subscribe((v: number) => console.log("DC2", v));
+dc.setValue(42);
 dcUnsub();
+dcUnsub2();
