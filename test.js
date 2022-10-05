@@ -129,9 +129,3 @@
 // }
 
 // setupHelp();
-
-const makeAdder = (a) => (b) => a + b;
-
-const add10 = makeAdder(10);
-
-console.log(add10(5));
