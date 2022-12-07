@@ -1,131 +1,77 @@
-// undeclared variables are global
-{
-  var stuff = "cool";
+const foo = debounce(() => {
+  console.log("wow");
+}, 500);
+
+function debounce(cb, del) {
+  let timerID;
+
+  return function (...args) {
+    if (timerID) clearTimeout(timerID);
+
+    timerID = setTimeout(() => cb(...args), del);
+  };
 }
 
-// console.log("wow", stuff);
+function ListNode(val, next) {
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
+}
 
-// var carName = "Volvo";
-// // code here can use window.carName
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+function traverseLL(node) {
+  let res = "";
+  let currNode = node;
+  while (currNode.next) {
+    res = currNode.value + res;
+    const nextNode = currNode.next;
+    currNode = nextNode;
+    if (currNode.next === null) {
+      res = currNode.value + res;
+      return Number(res);
+    }
+  }
+}
 
-// let carName1 = "BMW";
-// // code here can not use window.carName
+var addTwoNumbers = function (l1, l2) {
+  const num1 = traverseLL(l1);
+  const num2 = traverseLL(l2);
 
-// var fullMoon = true;
+  const sum = num1 + num2;
+  const arr = String(sum).split("").reverse();
+  console.log("arr", arr);
+  const dummyHead = new ListNode(0);
+  let curr = dummyHead;
+  while (arr.length) {
+    const el = Number(arr.shift());
+    let newNode = new ListNode(el);
+    curr.next = newNode;
+    curr = newNode;
+  }
 
-// // Attempt to use a variable before declaring it
-// console.log(x);
+  return dummyHead.next;
+};
 
-// // Variable assignment without var
-// x = 100;
+const obj22 = {
+  value: 4,
+  next: null,
+};
+const obj11 = {
+  value: 3,
+  next: null,
+};
 
-// // The code we wrote
-// console.log(x);
-// var x = 100;
+const obj1 = {
+  value: 4,
+  next: obj11,
+};
 
-// // How JavaScript interpreted it
-// var x;
-// console.log(x);
-// x = 100;
+const obj2 = {
+  value: 6,
+  next: obj22,
+};
 
-// // Initialize x in the global scope
-// var x = 100;
-
-// function hoist() {
-//   // A condition that should not affect the outcome of the code
-//   if (false) {
-//     var x = 200;
-//   }
-//   console.log(x);
-// }
-
-// hoist();
-
-// function counter() {
-//   // Private counter variable
-//   let count = 0;
-
-//   // To increment the value of counter
-//   function increment() {
-//     count++;
-//     console.log(count);
-//   }
-
-//   // To decrement the value of counter
-//   function decrement() {
-//     count--;
-//   }
-
-//   return { increment, decrement };
-// }
-// const closure = counter();
-
-// closure.increment();
-// closure.increment();
-
-// function test() {
-//   var foo = 33;
-//   if (foo) {
-//     let foo = foo + 55; // ReferenceError
-//   }
-// }
-// test();
-
-// function go(n) {
-//   // n here is defined!
-//   console.log(n); // Object {a: [1,2,3]}
-
-//   for (let n of n.a) {
-//     // ReferenceError
-//     console.log(n);
-//   }
-// }
-
-// go({ a: [1, 2, 3] });
-
-// var a = 1;
-// var b = 2;
-
-// if (a === 1) {
-//   var a = 11; // the scope is global
-//   let b = 22; // the scope is inside the if-block
-
-//   console.log(a); // 11
-//   console.log(b); // 22
-// }
-
-// console.log(a); // 11
-// console.log(b); // 2
-
-// if (Math.random() > 0.5) {
-//   var x = 1;
-// } else {
-//   var x = 2;
-// }
-// console.log(x);
-
-// function showHelp(help) {
-//   document.getElementById("help").textContent = help;
-// }
-
-// // function factory
-// function makeHelpCallback(help) {
-//   return function () {
-//     showHelp(help);
-//   };
-// }
-
-// function setupHelp() {
-//   var helpText = [
-//     { id: "email", help: "Your e-mail address" },
-//     { id: "name", help: "Your full name" },
-//     { id: "age", help: "Your age (you must be over 16)" },
-//   ];
-
-//   for (var i = 0; i < helpText.length; i++) {
-//     var item = helpText[i];
-//     document.getElementById(item.id).onfocus = makeHelpCallback(item.help);
-//   }
-// }
-
-// setupHelp();
+console.log(addTwoNumbers({ value: 2, next: obj1 }, { value: 5, next: obj2 }));

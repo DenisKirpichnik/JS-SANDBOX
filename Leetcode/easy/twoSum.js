@@ -28,17 +28,17 @@
 // 	}
 
 const twoSum = function (nums, target) {
-	const indicesMap = new Map();
+  const indicesMap = new Map();
 
-	for (let i = 0; i < nums.length; i++) {
-		const second = target - nums[i];
+  for (let i = 0; i < nums.length; i++) {
+    const second = target - nums[i];
 
-		if (indicesMap.has(second)) {
-			return [indicesMap.get(second), i];
-		}
+    if (indicesMap.has(second)) {
+      return [indicesMap.get(second), i];
+    }
 
-		indicesMap.set(nums[i], i);
-	}
+    indicesMap.set(nums[i], i);
+  }
 };
 
 console.log(twoSum([-1, -2, -3, -4, -5], -8)); // [0,1]

@@ -4,7 +4,7 @@ Array.prototype.myReduce = function (f, result) {
     i = 1;
     result = this[0];
   }
-  for (; i < this.length; i++) {
+  for (i < this.length; i++; ) {
     result = f(result, this[i], i, this);
   }
   return result;
